@@ -1,0 +1,8 @@
+version: '3'
+services:
+  go_lambda_dynamodb:
+    container_name: go_lambda_twilio_status
+    build: .
+    volumes:
+    - ./mount:/go/src
+    tty: true

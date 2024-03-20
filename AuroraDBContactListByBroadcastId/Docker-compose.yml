@@ -1,0 +1,8 @@
+version: '3'
+services:
+  go_lambda_broadcast_ids:
+    container_name: go_lambda_broadcast_ids
+    build: ""
+    volumes:
+      - ./mount:/go/src
+    tty: true

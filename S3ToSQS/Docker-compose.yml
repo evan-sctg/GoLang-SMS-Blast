@@ -1,0 +1,9 @@
+version: '3'
+services:
+  go_lambda_s3tosqs:
+    container_name: go_lambda_s3tosqs
+    build: .
+    volumes:
+    - ./mount:/go/src
+    - ./usr:/root
+    tty: true

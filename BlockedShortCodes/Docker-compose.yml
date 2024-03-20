@@ -1,0 +1,8 @@
+version: '3'
+services:
+ go_lambda_blocked_short_codes_live:
+   container_name: go_lambda_blocked_short_codes_live
+   build: ""
+   volumes:
+     - ./mount:/go/src
+   tty: true

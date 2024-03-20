@@ -1,0 +1,51 @@
+{
+  "StartAt": "BroadcastStep",
+  "States": {
+    "BroadcastStep": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:**********:function:BroadcastStep",
+      "Next": "BroadcastsFound"
+    },
+    "BroadcastsFound" : {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Not": {
+            "Variable": "$.uuid",
+            "StringEquals": ""
+          },
+          "Next": "SelectContacts"
+        }
+      ],
+      "Default": "NoBroadcasts"
+    },
+    "SelectContacts": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1::**********::function:AuroraDBContactListByBroadcastId",
+      "Next": "BlockedShortcodes"
+    },
+    "BlockedShortcodes": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1::**********::function:BlockedShortCodes",
+      "Next": "BatchDNCStep"
+    },
+    "BatchDNCStep": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1::**********::function:BatchDNCStep",
+      "Next": "S3ToSQS"
+    },
+    "S3ToSQS": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1::**********::function:S3ToSQS",
+      "Next": "CheckBroadcastsStep"
+    },
+    "CheckBroadcastsStep": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1::**********::function:BroadcastStep",
+      "Next": "BroadcastsFound"
+    },
+    "NoBroadcasts": {
+      "Type": "Succeed"
+    }
+  }
+}
