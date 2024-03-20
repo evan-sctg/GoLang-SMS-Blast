@@ -1,7 +1,7 @@
 # GoLang-SMS-Blast
 Ultra-fast shortcode SMS blasts via serverless AWS &amp; Twilio. Real-time Salesforce, NoSQL DB, opt-out &amp; DNC written in GoLang
 
-#GoLang-SMS-Blast - Ultra-scalable SMS Lead Gen for Call Centers
+# Ultra-scalable SMS Lead Gen for Call Centers
 This project provides a highly scalable SMS blast solution built with GoLang and serverless AWS services. It integrates with Twilio for message sending, DynamoDB for NoSQL data storage, Salesforce for real-time data synchronization, and utilizes AWS Lambda functions for efficient message processing.
 
 # Features:
@@ -49,6 +49,14 @@ Navigate to the project directory:
 cd GoLang-SMS-Blast
 ```
 
+## Building Lambdas
+#### ***Create each Lambda in the project and connect to Step Functions, SQS, S3, DynamoDB, Aurora or SQL
+#### ***Replace shortcode or longcode sending phone numbers, twillio, salesforce connection details 
+Navigate to each Lambda directory:
+```
+cd AddToSMSQueue
+```
+
 start container:
 ```
 docker-compose up -d
@@ -60,9 +68,6 @@ docker exec -it go_lambda_dynamodb /bin/bash
 ```
 
 
-Create each Lambda in the project and connect to Step Functions, SQS, S3, DynamoDB, Aurora or SQL
-
-Replace shortcode or longcode sending phone numbers, twillio, salesforce connection details 
 
 
 # State Machine for Sending SMS Blasts:
